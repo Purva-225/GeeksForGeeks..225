@@ -4,18 +4,17 @@ An element is considered a leader if it is greater than or equal to all elements
 class Solution {
   public:
     vector<int> leaders(vector<int>& arr) {
-        vector<int> elem; 
+        vector<int> ans; 
+        int maxi = INT_MIN; 
         int n = arr.size();
-    
-        int maxiElement = arr[n-1]; 
-        elem.push_back(maxiElement);
-        for(int i = n - 2; i>=0; i--){
-            if(arr[i] >= maxiElement){
-             maxiElement = arr[i];
-             elem.push_back(arr[i]);
-            } 
+        
+        for(int i = n-1 ; i>= 0; i--){
+            if(arr[i] >= maxi){
+            ans.push_back(arr[i]);
+             maxi = arr[i];
+           }
         }
-        reverse(elem.begin(),elem.end());
-        return elem;
+        reverse(ans.begin(), ans.end());
+        return ans; 
     }
 };

@@ -1,0 +1,43 @@
+class Solution {
+  public:
+  
+     int BinarySearch(vector<int>& arr, int st, int end, int key){
+          while(st<=end){
+              int mid = st + (end - st)/2; 
+              
+              if(arr[mid] == key){
+                  return mid;
+              }else if(arr[mid] < key){
+                  st = mid+1;
+              }else{
+                  end = mid-1; 
+              }
+          }
+           return -1; 
+     }
+  
+    int search(vector<int>& arr, int key) {
+        int n = arr.size(); 
+        int st = 0; 
+        int end = n-1;
+        
+         while(st < end){
+        int mid = st + (end - st)/2; 
+        
+            if(arr[mid] >= arr[0]){
+                st = mid+1; 
+            }else{
+                end = mid; 
+            }
+        }
+        int pivot = st; 
+        
+        // DECIDES WHICH SIDE TO GO...
+
+        if(key >= arr[pivot] && key <= arr[n-1]){
+            return BinarySearch(arr,pivot,n-1,key);
+        }else{
+            return BinarySearch(arr,0,pivot-1,key);
+        }
+    }
+};

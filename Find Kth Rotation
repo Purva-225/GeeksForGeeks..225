@@ -1,0 +1,37 @@
+class Solution {
+  public:
+    int findKRotation(vector<int> &arr) {
+        int n = arr.size(); 
+        int low = 0; 
+        int high = n-1; 
+        
+        while(low < high){
+            int mid = low + (high - low)/2; 
+            if(arr[mid] < arr[high]){
+                high = mid; 
+            }else {
+                low = mid + 1; 
+            }
+        }
+        return low; 
+    }
+};
+
+
+
+
+
+
+ // monotonic: one half is always sorted. 
+            // what to return: as num of rotations = idx of mini [ return the arr[low/high]]
+            // what to find : No.of minimum element, [ idx of mini = num of rotations ]
+            // search space: entire array.
+            // what id mid: low + (high - low)/2
+            // what if condition is true: 
+            // why left/right: to find minimum where does it exist. 
+            //ans stored in which variable: 
+            // /******* YAHA HUM MINI ELEMENTS KI IDX KO DHUNDH RAHE HAI *****/ 
+            // ithe jar array rotated dila asel test case
+            //madhe tarrach tyach output yeil nahi tr its 0
+            // NUM OF ROTATIONS == NUMS OF IDX. jitti baar ek array rotated hai utna he 
+            // usmai minimum num ki idx hai. 

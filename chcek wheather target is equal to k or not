@@ -1,0 +1,27 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+int main(){
+    int arr[] = {2,3,4,6,7,8,9,17}; 
+    int target = 8; 
+    int n = sizeof(arr)/sizeof(arr[0]); 
+    int st = 0; int end = n-1; 
+    int mid = 0; 
+    int ans = 0; 
+    
+    while(st <= end){
+         mid = st +(end - st)/2; 
+
+        if(arr[mid] == target){
+            ans = mid;
+              break;
+
+        }else if(arr[mid] < target){
+            st = mid + 1; 
+        }else {
+            end = mid - 1; 
+        }
+    }
+    cout<< ans << endl; 
+}
